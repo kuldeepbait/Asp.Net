@@ -16,9 +16,14 @@ namespace Asp.NetClassses
         {
             if (!IsPostBack)
             {
+                if (Session["User"] == null)
+                {
+                    Response.Redirect("Login.aspx");
+                }
                 BindGrid();
                 // SetInitialRow();
             }
+           
         }
 
         private void BindGrid()
@@ -118,10 +123,13 @@ namespace Asp.NetClassses
             Employee emp = new Employee();
             emp.EmpName = ((TextBox)GridView1.FooterRow.FindControl("txtBoxNameFt")).Text;
             emp.EmpSalary = Convert.ToDecimal(((TextBox)GridView1.FooterRow.FindControl("txtSalaryFt")).Text);
+            emp.CreatedBy = Convert.ToString(Session["User"]);
+            emp.CreatedDate = DateTime.Now;
             db.Employees.Add(emp);
             db.SaveChanges();
             GridView1.FooterRow.Visible = false;
             BindGrid();
+            Response.Redirect("WebForm1.aspx");
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)

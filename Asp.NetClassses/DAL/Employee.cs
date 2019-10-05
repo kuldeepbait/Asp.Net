@@ -21,5 +21,7 @@ namespace Asp.NetClassses.DAL
         public Nullable<int> CityId { get; set; }
         public string Email { get; set; }
         public Nullable<System.DateTime> Doj { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
     }
 }

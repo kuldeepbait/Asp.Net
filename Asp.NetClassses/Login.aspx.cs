@@ -26,6 +26,8 @@ namespace Asp.NetClassses
                     var checkPassword = (user.Password == txtBoxPasword.Text.Trim());
                     if(checkPassword)
                     {
+                        Session["User"] = user.UserId;
+                        Session["UserName"] = user.FullName;
                         Response.Redirect("Default.aspx");
                         //or
                       //  Server.Transfer("GridCrud.aspx");
