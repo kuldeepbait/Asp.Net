@@ -20,6 +20,7 @@ namespace Asp.NetClassses
                 {
                     Response.Redirect("Login.aspx");
                 }
+              
                 BindGrid();
                 // SetInitialRow();
             }
@@ -66,6 +67,14 @@ namespace Asp.NetClassses
                 // ddlCities.Items.FindByValue(selectedCity).Selected = true;
                 ddlCities.Items.FindByText(selectedCity).Selected = true;
             }
+            if (e.Row.RowType == DataControlRowType.Footer)
+            {
+                DropDownList ddlCities = (DropDownList)e.Row.FindControl("ddlCityFt");
+                ddlCities.DataSource = db.Cities.ToList();
+                ddlCities.DataTextField = "CityName";
+                ddlCities.DataValueField = "Id";
+                ddlCities.DataBind();
+            }
         }
 
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -74,6 +83,7 @@ namespace Asp.NetClassses
             var emp = db.Employees.Where(em => em.EmpId == empId).FirstOrDefault();
             emp.EmpName = ((TextBox)GridView1.Rows[e.RowIndex].FindControl("txtBoxName")).Text;
             emp.EmpSalary = Convert.ToDecimal(((TextBox)GridView1.Rows[e.RowIndex].FindControl("txtBoxSalary")).Text);
+            emp.CityId = Convert.ToInt32(((DropDownList)GridView1.Rows[e.RowIndex].FindControl("ddlCities")).SelectedValue);
             db.SaveChanges();
             GridView1.EditIndex = -1;
             ScriptManager.RegisterStartupScript(this,typeof(Page), "Alert","<script>alert('Record has been update successfully!');</script>",false);
@@ -123,6 +133,7 @@ namespace Asp.NetClassses
             Employee emp = new Employee();
             emp.EmpName = ((TextBox)GridView1.FooterRow.FindControl("txtBoxNameFt")).Text;
             emp.EmpSalary = Convert.ToDecimal(((TextBox)GridView1.FooterRow.FindControl("txtSalaryFt")).Text);
+            emp.CityId = Convert.ToInt32(((DropDownList)GridView1.FooterRow.FindControl("ddlCityFt")).SelectedValue);
             emp.CreatedBy = Convert.ToString(Session["User"]);
             emp.CreatedDate = DateTime.Now;
             db.Employees.Add(emp);

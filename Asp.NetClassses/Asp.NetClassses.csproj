@@ -222,6 +222,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Grid.ascx" />
     <Content Include="WebForm1.aspx" />
     <EntityDeploy Include="DAL\TestDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

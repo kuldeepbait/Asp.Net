@@ -53,6 +53,9 @@
                             <asp:DropDownList ID="ddlCities" runat="server">
                             </asp:DropDownList>
                         </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:DropDownList ID="ddlCityFt" runat="server">  </asp:DropDownList>
+                        </FooterTemplate>
                     </asp:TemplateField>
                     <asp:CommandField ShowEditButton="true" ShowDeleteButton="true" />
                 </Columns>
@@ -67,8 +70,5 @@
                 <SortedDescendingHeaderStyle BackColor="#93451F" />
             </asp:GridView>
             <asp:ValidationSummary ID="ValidationSummary1" ForeColor="Red" runat="server" />
-
         </div>
-    </asp:FormView>
-
 </asp:Content>
