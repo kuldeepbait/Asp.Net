@@ -14,10 +14,10 @@ namespace Asp.NetClassses
         TestEntities db = new TestEntities();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 BindGrid();
-               // SetInitialRow();
+                // SetInitialRow();
             }
         }
 
@@ -34,14 +34,14 @@ namespace Asp.NetClassses
                             b.Id,
                             b.CityName
                         }).ToList();
-            GridView1.DataSource = list ;
+            GridView1.DataSource = list;
             GridView1.DataBind();
         }
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             int empId = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
-           // int empId = Convert.ToInt32(GridView1.Rows[e.RowIndex].data DataKeyNames[""]);
+            // int empId = Convert.ToInt32(GridView1.Rows[e.RowIndex].data DataKeyNames[""]);
             var eml = db.Employees.Where(em => em.EmpId == empId).FirstOrDefault();
             db.Employees.Remove(eml);
             db.SaveChanges();
@@ -71,12 +71,13 @@ namespace Asp.NetClassses
             emp.EmpSalary = Convert.ToDecimal(((TextBox)GridView1.Rows[e.RowIndex].FindControl("txtBoxSalary")).Text);
             db.SaveChanges();
             GridView1.EditIndex = -1;
+            ScriptManager.RegisterStartupScript(this,typeof(Page), "Alert","<script>alert('Record has been update successfully!');</script>",false);
             BindGrid();
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if(e.CommandName=="Add")
+            if (e.CommandName == "Add")
             {
                 SetInitialRow();
             }

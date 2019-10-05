@@ -1,15 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GridCrud.aspx.cs" Inherits="Asp.NetClassses.GridCrud" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="GridCrud.aspx.cs" Inherits="Asp.NetClassses.GridCrud" %>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
 
-<body>
-    <form id="form1" runat="server">
-        <div class="row">
+        <div class="row" >
             <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" />
             <asp:Button ID="btnSave" runat="server" Visible="false" Text="Save" OnClick="btnSave_Click" />
             <asp:Button ID="btnCancel" runat="server" Visible="false" Text="Cancel" OnClick="btnCancel_Click" />
@@ -75,6 +69,6 @@
             <asp:ValidationSummary ID="ValidationSummary1" ForeColor="Red" runat="server" />
 
         </div>
-    </form>
-</body>
-</html>
+    </asp:FormView>
+
+</asp:Content>

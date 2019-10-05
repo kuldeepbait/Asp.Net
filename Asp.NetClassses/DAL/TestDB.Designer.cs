@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'c:\users\kuldeep\documents\visual studio 2015\Projects\Asp.NetClassses\DAL\TestDB.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\Company\Classes\Projects\Asp.Net\Asp.NetClassses\DAL\TestDB.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
